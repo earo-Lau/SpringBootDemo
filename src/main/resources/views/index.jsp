@@ -8,7 +8,7 @@
 </head>
 <body>
 <pre>
-        Welcome to Spring MVC world
-    </pre>
+            Welcome to Spring MVC world
+        </pre>
 </body>
 </html>
