@@ -1,9 +1,14 @@
 package com.test.springmvc4;
 
+import com.test.springmvc4.interceptor.DemoInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -12,9 +17,9 @@ import org.springframework.web.servlet.view.JstlView;
  * Created by lauearo on 25/04/2017.
  */
 @Configuration
-@EnableWebMvc
+@EnableWebMvc   //Enable Spring MVC
 @ComponentScan("com.test.springmvc4")
-public class MyMvcConfig {
+public class MyMvcConfig extends WebMvcConfigurerAdapter {  //inherit WebMvcConfigurerAdapter, which config for Spring MVC
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -24,5 +29,22 @@ public class MyMvcConfig {
         viewResolver.setViewClass(JstlView.class);
 
         return viewResolver;
+    }
+
+    @Bean
+    public HandlerInterceptor getDemoInterceptor() {
+        return new DemoInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        registry.addInterceptor(getDemoInterceptor());
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");   //addResourceHandler: Resource path exprot to WEB-INF/; addResourceLocations: resource location in src.
     }
 }
