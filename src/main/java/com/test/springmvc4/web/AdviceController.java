@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdviceController {
     @RequestMapping("/advice")
     public String getSomething(@ModelAttribute("msg") String msg, TestObj obj) {
-        throw new IllegalArgumentException("Sorry, parameter error/" + "来自@ModelAttribute: " + msg);
+        throw new IllegalArgumentException("Sorry, parameter error/" + "come from @ModelAttribute: " + msg);
     }
 }

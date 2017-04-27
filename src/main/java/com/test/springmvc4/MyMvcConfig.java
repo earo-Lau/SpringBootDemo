@@ -4,6 +4,8 @@ import com.test.springmvc4.interceptor.DemoInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -33,6 +35,13 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {  //inherit WebMvcConf
         return new DemoInterceptor();
     }
 
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(1000000);
+
+        return multipartResolver;
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
@@ -43,12 +52,14 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {  //inherit WebMvcConf
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
         registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");   //addResourceHandler: Resource path exprot to WEB-INF/; addResourceLocations: resource location in src.
+        registry.addResourceHandler("/upload/**").addResourceLocations("classpath:/upload/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);
         registry.addViewController("/index").setViewName("/index"); //using ViewController to map path
+        registry.addViewController("/toUpload").setViewName("/upload");
     }
 
     @Override
