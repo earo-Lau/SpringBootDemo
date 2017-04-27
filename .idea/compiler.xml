@@ -12,7 +12,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringBootDemo" target="1.8" />
-      <module name="SringBootDemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

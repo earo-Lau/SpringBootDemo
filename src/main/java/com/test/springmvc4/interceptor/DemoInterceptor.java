@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DemoInterceptor extends HandlerInterceptorAdapter {    //inherit HandlerInterceptorAdapter to create custom interceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {   //trigger before request process
+//        super.preHandle(request, response, handler);
         long startTimeStamp = System.currentTimeMillis();
         request.setAttribute("startTime", startTimeStamp);
 
@@ -25,7 +26,7 @@ public class DemoInterceptor extends HandlerInterceptorAdapter {    //inherit Ha
         long startTimeStamp = (long) request.getAttribute("startTime");
         request.removeAttribute("startTime");
         long endTimeStamp = System.currentTimeMillis();
-        System.out.println("Process time of current request: " + endTimeStamp - startTimeStamp + "ms");
+        System.out.println("Process time of current request: " + (endTimeStamp - startTimeStamp) + "ms");
 
         request.setAttribute("handlingTime", endTimeStamp - startTimeStamp);
     }
