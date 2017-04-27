@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller //declare a controller
 public class HelloController {
-    @RequestMapping("/index")   // using RequestMapping to map URL with method
+    //@RequestMapping("/index")   // using RequestMapping to map URL with method
     public String hello() {
         return "index"; //return the file name and mapping from ViewResolver
     }
