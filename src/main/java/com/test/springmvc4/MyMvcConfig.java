@@ -1,15 +1,19 @@
 package com.test.springmvc4;
 
 import com.test.springmvc4.interceptor.DemoInterceptor;
+import com.test.springmvc4.messageconverter.CustomMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.util.List;
 
 
 /**
@@ -42,6 +46,16 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {  //inherit WebMvcConf
 
         return multipartResolver;
     }
+
+    @Bean
+    public CustomMessageConverter converter() {
+        return new CustomMessageConverter();
+    }
+
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {  //add extend message converter
+        converters.add(converter());
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
@@ -60,6 +74,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {  //inherit WebMvcConf
         super.addViewControllers(registry);
         registry.addViewController("/index").setViewName("/index"); //using ViewController to map path
         registry.addViewController("/toUpload").setViewName("/upload");
+        registry.addViewController("/converter").setViewName("/converter");
     }
 
     @Override
