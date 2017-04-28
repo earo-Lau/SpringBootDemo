@@ -22,5 +22,6 @@ public class WebInitializer implements WebApplicationInitializer { // using WebA
         Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));  //register dispatcherServlet for Spring MVC
         servlet.addMapping("/");
         servlet.setLoadOnStartup(1);
+        servlet.setAsyncSupported(true);    //enable async method
     }
 }
