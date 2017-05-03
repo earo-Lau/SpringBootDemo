@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication	//Spring Boot core annotation
+//@SpringBootApplication	//Spring Boot core annotation
 public class SpringBootDemoApplication {
 
     @Value("${project.auth}")
