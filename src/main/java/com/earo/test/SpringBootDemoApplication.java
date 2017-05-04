@@ -21,7 +21,7 @@ public class SpringBootDemoApplication {
     @Autowired
     AuthorSettings author;
 
-	@RequestMapping("/")
+	@RequestMapping("/projectInfo")
 	public String index(){
 		return "Project name is " + projectName + ", Auth " + projectAuth;
 	}

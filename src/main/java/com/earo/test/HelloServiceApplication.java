@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by lauearo on 02/05/2017.
  */
 @RestController
-@SpringBootApplication
+//@SpringBootApplication
 public class HelloServiceApplication {
     @Autowired
     HelloService helloService;
