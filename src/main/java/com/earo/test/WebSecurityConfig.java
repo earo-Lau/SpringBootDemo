@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //super.configure(http);
 
         http.authorizeRequests()
-                .antMatchers("/").permitAll()  //permit "/" and "/login" request
+                .antMatchers("/**").permitAll()  //permit "/" and "/login" request
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")    //config logon path
