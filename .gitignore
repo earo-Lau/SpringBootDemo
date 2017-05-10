@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 .DS_Store
 keystore.p12
+application-mysql.properties
+*.sql
 
 ### STS ###
 .apt_generated
