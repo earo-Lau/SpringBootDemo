@@ -27,7 +27,7 @@ public class Person {
     }
 
     private String name;
-    private int age;
+    private Integer age;
     private String address;
 
     public String getAddress() {
@@ -46,7 +46,7 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
