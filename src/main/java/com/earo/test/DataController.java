@@ -3,6 +3,7 @@ package com.earo.test;
 import com.earo.test.DAO.CustomRepositoryFactoryBean;
 import com.earo.test.DAO.PersonRepository;
 import com.earo.test.model.Person;
+import com.earo.test.service.IDemoService;
 import com.sun.xml.internal.rngom.digested.DDataPattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,8 @@ import java.util.List;
 public class DataController {
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    IDemoService demoService;
 
     @RequestMapping(value = "/save")
     public Person save(String name, String address, int age){
@@ -73,4 +76,15 @@ public class DataController {
 
         return personPage;
     }
+
+    @RequestMapping("/rollback")
+    public Person rollBack(Person person){
+        return demoService.saveWithRollBack(person);
+    }
+
+    @RequestMapping("/noRollback")
+    public Person noRollBack(Person person){
+        return demoService.saveWithoutRollBack(person);
+    }
+
 }

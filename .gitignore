@@ -4,6 +4,7 @@ target/
 keystore.p12
 application-mysql.properties
 *.sql
+*.log*
 
 ### STS ###
 .apt_generated
