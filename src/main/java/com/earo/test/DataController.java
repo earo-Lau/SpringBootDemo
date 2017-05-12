@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +30,21 @@ public class DataController {
 
     @RequestMapping(value = "/save")
     public Person save(String name, String address, int age){
-        Person person = personRepository.save(new Person(name, age, address, null));
+        //Person person = personRepository.save(new Person(name, age, address, null));
+        Person person = demoService.save(new Person(name, age, address));
         return person;
+    }
+
+    @RequestMapping("/able/{id}")
+    public Person cacheable(@PathVariable("id") Long id){
+        Person p = demoService.findOne(id);
+        return  p;
+    }
+
+    @RequestMapping("/evit/{id}")
+    public String evit(@PathVariable("id") Long id){
+        demoService.remove(id);
+        return "OK";
     }
 
     @RequestMapping("/query1")
