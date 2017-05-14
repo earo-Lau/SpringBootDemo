@@ -58,7 +58,7 @@ public class DemoServiceImpl implements IDemoService {
     }
 
     @Override
-    @Cacheable(value = "people", key = "#id")
+    @Cacheable(value = "people", keyGenerator = "customGenerator")
     public Person findOne(Long id) {
         Person p = personRepository.findOne(id);
         System.out.println("Cache person(id: " + p.getId().toString() + ").");
