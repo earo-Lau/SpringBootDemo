@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -28,9 +29,19 @@ public class Person implements Serializable {
         this.id = id;
     }
 
+    @Size(min = 2, max = 10)
     private String name;
     private Integer age;
     private String address;
+    private String nation;
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
 
     public String getAddress() {
         return address;
@@ -79,4 +90,5 @@ public class Person implements Serializable {
         this.address=address;
         this.id=id;
     }
+
 }

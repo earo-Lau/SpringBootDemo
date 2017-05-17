@@ -4,7 +4,6 @@ import com.earo.test.DAO.CustomRepositoryFactoryBean;
 import com.earo.test.DAO.PersonRepository;
 import com.earo.test.model.Person;
 import com.earo.test.service.IDemoService;
-import com.sun.xml.internal.rngom.digested.DDataPattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
