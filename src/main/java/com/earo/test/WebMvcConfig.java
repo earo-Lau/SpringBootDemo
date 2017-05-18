@@ -33,6 +33,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
+    /*
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
         TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory(){
@@ -60,4 +61,5 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         connector.setRedirectPort(8443);
         return connector;
     }
+    */
 }

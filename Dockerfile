@@ -16,4 +16,5 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
 
 # set entry point
 ENTRYPOINT ["/root/workspace/SpringBootDemo/target"]
+EXPOSE 8088
 CMD [ "java", "-jar", "spring-boot-demo-0.0.1-SNAPSHOT.jar" ]
