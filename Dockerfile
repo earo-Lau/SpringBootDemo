@@ -5,7 +5,7 @@ VOLUME /tmp
 WORKDIR /root/workspace
 
 # install git
-RUN apt-get update && apt-get install git-all
+RUN apt-get update -yqq && apt-get install -y git-all
 
 RUN git clone "git@github.com:earo-Lau/SpringBootDemo.git" ;\
     cd SpringBootDemo ;\
