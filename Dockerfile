@@ -12,9 +12,9 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
     cd SpringBootDemo ;\
     git config --global user.email "earo.lau@outlook.com" ;\
 	git config --global user.name "earo-Lau" ;\
-	mvn install -Dmaven.test.skip=true
+	mvn package -Dmaven.test.skip=true
 
 # set entry point
-# ENTRYPOINT ["/root/workspace/SpringBootDemo/target"]
+ENTRYPOINT ["/root/workspace/SpringBootDemo"]
 EXPOSE 8088
 # CMD [ "java", "-jar", "spring-boot-demo-0.0.1-SNAPSHOT.jar" ]
