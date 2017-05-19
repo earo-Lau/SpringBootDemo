@@ -13,7 +13,7 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
     git config --global user.email "earo.lau@outlook.com" ;\
 	git config --global user.name "earo-Lau" ;\
 	mvn package -Dmaven.test.skip=true ;\
-	cp /target/spring-boot-demo-0.0.1-SNAPSHOT.jar /tmp
+	cp target/spring-boot-demo-0.0.1-SNAPSHOT.jar /tmp
 
 # set entry point
 WORKDIR SpringBootDemo/target
