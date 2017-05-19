@@ -15,6 +15,6 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
 	mvn package -Dmaven.test.skip=true
 
 # set entry point
-ENTRYPOINT ["/root/workspace/SpringBootDemo/target"]
+WORKDIR SpringBootDemo/target
 EXPOSE 8088
 CMD [ "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "spring-boot-demo-0.0.1-SNAPSHOT.jar" ]
