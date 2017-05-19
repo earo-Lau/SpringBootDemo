@@ -1,0 +1,1 @@
+java -Djava.security.egd=file:/dev/./urandom -jar ${PWD}/workspace/SpringBootDemo/target/spring-boot-demo-0.0.1-SNAPSHOT.jar
