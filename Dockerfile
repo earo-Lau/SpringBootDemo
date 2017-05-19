@@ -11,7 +11,6 @@ RUN apt-get update -yqq && apt-get install -y git-all
 # copy source
 RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
     cd SpringBootDemo ;\
-    chmod a+x ${PWD}/workspace/SpringBootDemo/runboot.sh ;\
     git config --global user.email "earo.lau@outlook.com" ;\
 	git config --global user.name "earo-Lau" ;\
 	mvn package -Dmaven.test.skip=true ;
@@ -19,5 +18,6 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
 # set entry point
 WORKDIR SpringBootDemo/target
 
+RUN chmod a+x ${PWD}/workspace/SpringBootDemo/runboot.sh
 EXPOSE 8088
-ENTRYPOINT [ "../runboot.sh" ]
+ENTRYPOINT [ "${PWD}/workspace/SpringBootDemo/runboot.sh" ]
