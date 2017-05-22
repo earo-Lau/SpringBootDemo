@@ -12,11 +12,10 @@ RUN apt-get update -yqq && apt-get install -y git-all
 RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
     cd SpringBootDemo ;\
     git config --global user.email "earo.lau@outlook.com" ;\
-	git config --global user.name "earo-Lau" ;\
-	mvn package -Dmaven.test.skip=true ;
-ADD runboot.sh ${PWD}/workspace
+	git config --global user.name "earo-Lau" ;
 
 # set entry point
-WORKDIR SpringBootDemo/target
+WORKDIR SpringBootDemo
 EXPOSE 8088
-ENTRYPOINT [ "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "spring-boot-demo-0.0.1-SNAPSHOT.jar" ]
+ENTIRYPOINT[ "mvn", "package" ]
+CMD [ "-Dmaven.test.skip=true" ]
