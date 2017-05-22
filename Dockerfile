@@ -17,5 +17,5 @@ RUN git clone "https://github.com/earo-Lau/SpringBootDemo.git" ;\
 # set entry point
 WORKDIR SpringBootDemo
 EXPOSE 8088
-ENTRYPOINT[ "mvn", "package" ]
+ENTRYPOINT [ "mvn", "package" ]
 CMD [ "-Dmaven.test.skip=true" ]
