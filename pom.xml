@@ -106,6 +106,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>ant-contrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+			<version>1.0b3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -113,6 +119,39 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.runtime.classpath"/>
+								<echo message="${project.build.directory} begin to copy" />
+								<if>
+									<not>
+										<available file="${project.build.directory}/output" type="dir" />
+									</not>
+									<then>
+										<mkdir dir="${project.build.directory}/output" />
+									</then>
+								</if>
+
+								<copy todir="${project.build.directory}/output/">
+									<fileset dir="${project.build.directory}">
+										<include name="**.jar"></include>
+									</fileset>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
