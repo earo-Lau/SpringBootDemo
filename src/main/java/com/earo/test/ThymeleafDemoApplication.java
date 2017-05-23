@@ -1,11 +1,15 @@
 package com.earo.test;
 
 import com.earo.test.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.TemplateRepository;
+import org.thymeleaf.resourceresolver.IResourceResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,13 @@ public class ThymeleafDemoApplication {
         return "index";
     }
 
+    @RequestMapping("/getResolver")
+    public String getResolver(){
+        return templateResolver.getPrefix();
+    }
+
+    @Autowired
+    TemplateResolver templateResolver;
     public static void main(String[] args){
         new SpringApplicationBuilder(ThymeleafDemoApplication.class)
                 .run(args);
